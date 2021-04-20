@@ -32,7 +32,7 @@
       </record>
       
       <menuitem id="menu_customer_data" name="Import Customer Data" parent="contacts.menu_contacts"
-              action="action_customer_data" sequence="3"/>
+              action="action_customer_data" sequence="10"/>
       
       
  </odoo>      

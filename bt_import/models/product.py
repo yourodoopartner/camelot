@@ -25,6 +25,12 @@ class ProductTemplate(models.Model):
     retail_price = fields.Float(string='Retail Price')
     color_selling_id = fields.Many2one('color.selling',string='Color Selling Period')
     product_currency_id = fields.Many2one('product.currency',string='Currency')
+    current_cost = fields.Float(string='Current Cost')
+    
+class ProductProduct(models.Model):
+    _inherit = 'product.product'
+
+    current_cost = fields.Float(string='Current Cost')
     
 class ProductType(models.Model):
     _name = 'product.type'
