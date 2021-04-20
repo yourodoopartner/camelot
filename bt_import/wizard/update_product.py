@@ -49,6 +49,7 @@ class wizard_product_data(models.TransientModel):
                 old_data['retail_price'] = raw.get('Retail Price',False)
                 old_data['royalty'] = raw.get('Royalty',False)
                 old_data['barcode'] = raw.get('Bar Code',False)  
+                old_data['type'] = 'product'
                 attribute_id = self.find_attribute('color')
                 attribute_value1 = self.find_attribute_value(raw.get('Color',False) )
                 if raw.get('Color1',False):
@@ -74,44 +75,9 @@ class wizard_product_data(models.TransientModel):
                                           
                 ProductAttribute = self.env['product.attribute']
                 ProductAttributeValue = self.env['product.attribute.value']
-              
-                       
-                       
-                       
-                       
+                  
                 if not product_id and raw.get('Currency',False) == 'CAN':                             
-                    product_id = self.env['product.template'].create(old_data)
-                    # pdt_id = self.env['product.template'].search([('id', '=', product_id.id)])
-                    # print('ooooooooooooooooooo ',pdt_id)
-                    # l = []
-                    # if pdt_id.attribute_line_ids:
-                        # print('>>>>>>>>>>>>>>>>>>>>>>>> ',pdt_id.attribute_line_ids)
-                        # for attr in pdt_id.attribute_line_ids:
-                            # print('>>>>>>>>>>>>>>>>>>>>>>>> ',attr)
-                            # l.append(attr.value_ids)
-                            # print('>>>>>>>>>>>>>>>>>>>>>>>> ',l)
-                            #
-                    # else:
-                        # if not attribute_id:
-                            # att_color = ProductAttribute.create({'name': 'color', 'sequence': 1})
-                        # else:
-                            # att_color = attribute_id  
-                        # if not attribute_value1:    
-                            # att_color_1 = ProductAttributeValue.create({'name': raw.get('Color',False) , 'attribute_id': att_color.id, 'sequence': 1})                            
-                        # else:
-                            # att_color_1 = attribute_value1
-                        # l.append(att_color_1)    
-                        # print('[[[[[[[[[[[[[[',l[0])
-                        # pdt_id.attribute_line_ids = [
-                                        # (0, 0, {
-                                            # 'attribute_id': att_color.id,
-                                            # 'value_ids': [(6, 0, [l[0].id])]
-                                        # }),                                
-                                    # ]
-                        
-                        
-                                
-                                
+                    product_id = self.env['product.template'].create(old_data)                                                    
                     if not attribute_id:
                         att_color = ProductAttribute.create({'name': 'color', 'sequence': 1})
                     else:
