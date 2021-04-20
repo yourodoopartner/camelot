@@ -31,7 +31,7 @@ class data_import_wizard(models.TransientModel):
             if '.xlsx' in file_name:
                 fullpath = os.path.join(path, 'emp_attendance.xlsx')
             with open(fullpath, 'wb') as f:
-                f.write(base64.decodestring(binary_file))
+                f.write(base64.decodebytes(binary_file))
             rb = xlrd.open_workbook(fullpath)
             sheet = rb.sheet_by_index(0)
             headers = []
@@ -48,6 +48,3 @@ class data_import_wizard(models.TransientModel):
                   headers = row
         return list_raw
                 
-    
-data_import_wizard()
-
