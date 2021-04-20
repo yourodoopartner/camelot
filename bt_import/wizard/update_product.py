@@ -12,10 +12,12 @@ class wizard_product_data(models.TransientModel):
     def upload_product_data(self):
         if self.csv_file:
             list_raw_data = self.get_data_from_attchment(self.csv_file, self.csv_file_name)
+            
             if not list_raw_data:
                 raise UserError(_("Cannot import blank sheet."))
             
             for raw in list_raw_data:
+                
                 old_data = {}                
                 product_id = self.find_product(raw.get('Description 1',False))
                 category_id = self.find_category(raw.get('Class',False))
@@ -77,9 +79,8 @@ class wizard_product_data(models.TransientModel):
                        
                        
                        
-                    
-                if not product_id and product_currency.name == 'CAN':                             
-                    product_id = self.env['product.template'].create(old_data) 
+                if not product_id and raw.get('Currency',False) == 'CAN':                             
+                    product_id = self.env['product.template'].create(old_data)
                     # pdt_id = self.env['product.template'].search([('id', '=', product_id.id)])
                     # print('ooooooooooooooooooo ',pdt_id)
                     # l = []
