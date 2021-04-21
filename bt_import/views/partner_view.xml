@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="res_partner_import" model="ir.ui.view">
+    <field name="name">res.partner.form.import</field>
+    <field name="model">res.partner</field>
+    <field name="type">form</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+		
+	  <xpath expr="//field[@name='vat']" position="before">
+	  	<field name="alt_contact"/>
+	  </xpath>	
+      <xpath expr="//field[@name='vat']" position="after">
+        <field name="vat_no"/>
+        <field name="tax1_id"/>
+        <field name="tax2_id"/>
+        <field name="fedtax"/>
+        <field name="fax_no"/>
+        <field name="account_no"/>
+      </xpath>
+      <xpath expr="//field[@name='category_id']" position="after">
+        
+        <field name="contact_title"/>
+        <field name="county"/>
+        <field name="person_type_id"/>
+        <field name="vendor_currency_id"/>
+        <field name="customer_currency_id"/>
+        <field name="cie_warehouse"/>
+        <field name="cie_division"/>
+        
+        <field name="store_code_id"/>
+        <field name="type_id"/>
+        <field name="group_id"/>
+        <field name="warehouse_id"/>
+        <field name="territory_id"/>
+        <field name="agent_group_id"/>
+        <field name="tax_2_id"/>
+        <field name="fedvat"/>
+        <field name="ship_via"/>
+        <field name="full_name"/>   
+        <field name="other_name"/> 
+          
+      </xpath>
+    </field>
+  </record>
+
+</odoo>
